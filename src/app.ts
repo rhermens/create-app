@@ -13,8 +13,8 @@ const scanBoilerplates = () => {
     return Object.fromEntries(
         locations.filter(scanDir => fs.existsSync(scanDir)).flatMap((scanDir) => {
             return fs.readdirSync(scanDir, { withFileTypes: true })
-                .filter(dirent => dirent.isDirectory())
-                .map(dirent => ([dirent.name, `${scanDir}/${dirent.name}`]))
+                .filter(dirent => dirent.isDirectory() || (dirent.isSymbolicLink() && fs.lstatSync(fs.realpathSync(path.resolve(scanDir, dirent.name))).isDirectory()))
+                .map(dirent => ([dirent.name, fs.realpathSync(path.resolve(scanDir, dirent.name))]))
         })
     );
 }
