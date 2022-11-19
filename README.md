@@ -4,5 +4,5 @@ Copies project boilerplates
 # Installation
 ### Linux
 ```shell
-make && make install
+make && sudo make install
 ```
