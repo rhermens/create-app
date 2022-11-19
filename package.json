@@ -14,6 +14,9 @@
         "scripts": "build/*.js",
         "outputPath": "dist",
         "output": "create-app",
+        "assets": [
+            "boilerplates/**/*"
+        ],
         "targets": [
             "latest-linux",
             "latest-win"

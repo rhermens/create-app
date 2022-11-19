@@ -6,7 +6,7 @@ import { InvalidOptionArgumentError, Option, program } from 'commander';
 
 const scanBoilerplates = () => {
     const locations = [
-        path.resolve(__dirname, '../boilerplates'),
+        path.join(__dirname, '../boilerplates'),
         path.resolve(os.homedir(), '.create-app/boilerplates')
     ];
 
