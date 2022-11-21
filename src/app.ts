@@ -3,7 +3,7 @@ import path from 'path';
 import fs from 'fs';
 import { scanBoilerplates } from './utils/boilerplates';
 import { Argument, InvalidArgumentError, InvalidOptionArgumentError, program } from 'commander';
-import { recursiveCopy } from './utils/fs';
+import { recursiveCopyAsync } from './utils/fs';
 
 program
     .name('create-app')
@@ -36,7 +36,7 @@ program
         process.stdout.write(`Copying ${boilerplate} to ${outdir} \n`);
 
         fs.mkdirSync(outdir);
-        recursiveCopy(boilerplate, outdir, boilerplate);
+        await recursiveCopyAsync(boilerplate, outdir, boilerplate);
 
         process.stdout.write("\nHappy hacking!\n");
     })
