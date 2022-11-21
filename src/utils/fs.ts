@@ -28,10 +28,12 @@ export const recursiveCopy = (src: string, dest: string, cwd: string, ignores = 
 }
 
 export const recursiveCopyAsync = async (src: string, dest: string, cwd: string, ignores = ignore()) => {
-    if ((await fsp.lstat(src)).isDirectory() && fs.existsSync(path.join(src, '.gitignore'))) {
+    if (
+        (await fsp.lstat(src)).isDirectory() 
+        && fs.existsSync(path.join(src, '.gitignore'))
+    ) {
         cwd = src;
         ignores = ignore();
-        ignores.add(fs.readFileSync(path.join(src, '.gitignore')).toString());
         ignores.add((await fsp.readFile(path.join(src, '.gitignore'))).toString());
     }
 
