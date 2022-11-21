@@ -6,6 +6,7 @@ import { Argument, InvalidArgumentError, InvalidOptionArgumentError, program } f
 import { recursiveCopy } from './utils/fs';
 
 program
+    .name('create-app')
     .addArgument((() => {
         const boilerplates = scanBoilerplates();
         return new Argument("<boilerplate>", "Project boilerplate")

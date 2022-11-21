@@ -4,7 +4,8 @@ import fs from 'fs';
 
 export const scanBoilerplates = () => {
     const locations = [
-        path.join(__dirname, '../../boilerplates'),
+        path.join(__dirname, '../../boilerplates'), // ts-node runtime
+        path.join(__dirname, '../boilerplates'), // packaged assets
         path.resolve(os.homedir(), '.create-app/boilerplates')
     ];
 
